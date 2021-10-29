@@ -2,19 +2,18 @@
 
 int main() {
 	Sales_data total;
-	if (cin >> total.bookNo >> total.revenue >> total.units_sold) {
+	if (read(cin, total)) {
 		Sales_data trans;
-		while (cin >> trans.bookNo >> trans.revenue >> trans.units_sold) {
+		while (read(cin, trans)) {
 			if (total.isbn() == trans.isbn()) {
-				total.revenue += trans.revenue;
-				total.units_sold += trans.units_sold;
+				total = add(total, trans);
 			}
 			else {
-				cout << total.bookNo << " " << total.revenue << " " << total.units_sold << endl;
+				print(cout, total) << endl;
 				total = trans;
 			}
 		}
-		cout << total.bookNo << " " << total.revenue << " " << total.units_sold << endl;
+		print(cout, total) << endl;
 	}
 	else {
 		std::cerr << "No data?!" << endl;
